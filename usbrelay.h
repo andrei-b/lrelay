@@ -76,7 +76,7 @@ namespace USBRelay {
             if (num >= relayCount())
                 return true;
             uint8_t states = getStates();
-            return states & (1<<num) == 0;
+            return (states & (1<<num)) == 0;
         }
 
         bool isRelayOn(int num) {return !isRelayOff(num);}
@@ -109,7 +109,6 @@ namespace USBRelay {
             setState(0, CmdAllOn);
         }
 
-
         void toggleRelay(int n)
         {
             if (isRelayOn(n))
@@ -117,11 +116,13 @@ namespace USBRelay {
             else
                 setRelayOn(n);
         }
+
         const std::string  &userSerial()
         {
             getStates();
             return _userSerial;
         }
+
         void setUserSerial(const std::string & sn)
         {
             DeviceHandle dh(_path.c_str());
