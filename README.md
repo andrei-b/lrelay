@@ -19,7 +19,7 @@ int main()
         std::cout << boards.size() << " USB relay boards found!" << std::endl;
         std::cout << "First board has " << boards.front().relayCount() << " relays." << std::endl;
         std::cout << "Setting the first relay on the first board to the ON state." << std::endl;
-        boards.front().relayOn(0);
+        boards.front().setRelayOn(0);
     } else {
         std::cout << "No USB relay boards found!" << std::endl;
     }

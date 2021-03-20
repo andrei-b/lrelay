@@ -2,7 +2,7 @@
 
 USBRelay is a C++ header-only library for managing USB electrical relay modules
 USBRelay is built over the HIDAPI interface.
- 
+
 Copyright (c) 2021 Andrey Borovsky
 
 This library is distributed under the MIT License:
@@ -71,7 +71,7 @@ namespace USBRelay {
 
         [[nodiscard]] int relayCount() const { return numRelays; }
 
-        bool relayOff(int num)
+        bool isRelayOff(int num)
         {
             if (num >= relayCount())
                 return true;
@@ -79,7 +79,7 @@ namespace USBRelay {
             return states & (1<<num) == 0;
         }
 
-        bool relayOn(int num) {return !relayOff(num);}
+        bool isRelayOn(int num) {return !isRelayOff(num);}
 
         void setRelayState(int num, bool on)
         {
@@ -112,7 +112,7 @@ namespace USBRelay {
 
         void toggleRelay(int n)
         {
-            if (relayOn(n))
+            if (isRelayOn(n))
                 setRelayOff(n);
             else
                 setRelayOn(n);
